@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Jugadores formulario
+{% endblock %}
+
+{% block inicio %}
+    
+    <form action="" method="POST"> {% csrf_token %}
+
+    {{form.as_p}}
+
+    <input type="submit" value="Enviar">
+
+</form>
+    
+
+{% for jugador in jugadores %}
+    El nombre del jugador es: {{ jugador.nombre }},
+    
+    El apellido es: {{ jugador.apellido}},
+    
+    La edad es: {{ jugador.edad }},
+    
+    El apodo es: {{ jugador.apodo }}
+    <br>
+
+
+{% endfor %}
+
+{% endblock %}

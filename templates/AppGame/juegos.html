@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Juegos
+{% endblock %}
+
+{% block inicio %}
+    <H1>Los Datos del juego son:</H1>
+    <br>
+    <H2>El nombre es: {{ juegos.nombre }} </H2>
+    <br>
+    <H2>La categoria es: {{ juegos.categoria }} </H2>
+    <br>
+    <H2>La fecha de salida es: {{ juegos.fecha_salida }} </H2>
+    
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Jugadores
+{% endblock %}
+
+{% block inicio %}
+    <H1>Los Datos del jugador son:</H1>
+    <br>
+    <H2>El nombre es: {{ jugador.nombre }} </H2>
+    <br>
+    <H2>El apellido es: {{ jugador.apellido }} </H2>
+    <br>
+    <H2>La edad es: {{ jugador.edad }} </H2>
+    <br>
+    <H2>El apodo es: {{ jugador.apodo}} </H2>
+    
+{% endblock %}
