@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+
+{% block title %}
+   Juegos Formulario
+{% endblock %}
+
+{% block inicio %}
+    
+    <form action="" method="POST"> {% csrf_token %}
+
+    {{form.as_p}}
+
+    <input type="submit" value="Enviar">
+
+</form>
+    
+
+{% for juego in juegos %}
+    El nombre es: {{ juego.nombre }},
+    
+    El modelo es: {{ juego.categoria}},
+
+    El modelo es: {{ juego.fecha_salida}}
+    
+    
+    <br>
+
+
+{% endfor %}
+
+{% endblock %}

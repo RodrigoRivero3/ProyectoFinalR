@@ -1,12 +1,12 @@
 {% extends 'index.html' %}
 
 {% block title %}
-Busqueda Apodo
+Busqueda categoria
 {% endblock %}
 
 {% block inicio %}
     
-    <form action="/AppGame/busqueda_apodo_post/" method="GET"> {% csrf_token %}
+    <form action="/AppGame/busqueda_categoria_post/" method="GET"> {% csrf_token %}
 
         {{form.as_p}}
 

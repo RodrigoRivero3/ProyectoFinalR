@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Consolas Busqueda
+{% endblock %}
+
+{% block inicio %}
+
+{% for consola in consolas %}
+
+
+    La marca es: {{ consola.marca }},
+    
+    El modelo es: {{ consola.modelo}},
+    <br>
+
+
+{% endfor %}
+
+{% endblock %}
