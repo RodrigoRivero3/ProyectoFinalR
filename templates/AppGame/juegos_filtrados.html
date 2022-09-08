@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Juegos Busqueda
+{% endblock %}
+
+{% block inicio %}
+
+{% for juego in juegos %}
+
+
+    La marca es: {{ juego.nombre }},
+    
+    El modelo es: {{ juego.categoria}},
+    
+    El modelo es: {{ juego.fecha_salida}}
+    
+    
+    <br>
+
+
+{% endfor %}
+
+{% endblock %}

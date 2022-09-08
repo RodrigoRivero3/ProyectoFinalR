@@ -12,6 +12,7 @@ class Consola(models.Model):
     marca = models.CharField(max_length=40)
     modelo = models.CharField(max_length=30)
     
+    
 
 
 class Juegos(models.Model):

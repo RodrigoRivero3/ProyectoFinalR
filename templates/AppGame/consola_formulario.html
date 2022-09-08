@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+
+{% block title %}
+   Consola Formulaio
+{% endblock %}
+
+{% block inicio %}
+    
+    <form action="" method="POST"> {% csrf_token %}
+
+    {{form.as_p}}
+
+    <input type="submit" value="Enviar">
+
+</form>
+    
+
+{% for consola in consolas %}
+    La marca es: {{ consola.marca }},
+    
+    El modelo es: {{ consola.modelo}},
+    
+    
+    <br>
+
+
+{% endfor %}
+
+{% endblock %}
