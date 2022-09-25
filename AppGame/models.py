@@ -6,6 +6,10 @@ class Jugador(models.Model):
     apellido = models.CharField(max_length=50)
     edad = models.IntegerField()
     apodo = models.CharField(max_length=30, unique=True)
+   
+
+    def __str__(self):
+        return f"Jugador: {self.nombre}, Apellido {self.apellido}, Apodo {self.apodo}"
 
 
 class Consola(models.Model):

@@ -1,10 +1,59 @@
 
+from django.views.generic import ListView
+import django
+from django.contrib import messages
 
 from django.shortcuts import render , redirect
-
+from django.contrib.auth.decorators import login_required
 from AppGame.forms import  *
+from django.contrib.auth.mixins import LoginRequiredMixin 
+from AppGame.models import Jugador, Consola, Juegos
 
-from AppGame.models import Jugador, Consola, Juegos 
+
+def editar_jugador(request,apodo):
+    jugador_editar = Jugador.objects.get(apodo=apodo)
+
+    if request.method == 'POST':
+        mi_formulario = JugadorFormulario(request.POST)
+
+        if mi_formulario.is_valid():
+
+            data = mi_formulario.cleaned_data
+            
+            jugador_editar.nombre = data.get('nombre').title()
+            jugador_editar.apodo = data.get('apodo')
+            jugador_editar.apellido = data.get('apellido')
+            jugador_editar.edad = data.get('edad')
+            try:
+                jugador_editar.save()
+            except django.db.utils.IntegrityError:
+                messages.error(request, "apodo ya existe")
+            
+            
+            return redirect('AppGameJugadorFormulario') 
+
+    
+    
+    contexto = {
+
+        'form': JugadorFormulario(initial={
+            'nombre':jugador_editar.nombre,
+            'apodo': jugador_editar.apodo,
+            'apellido': jugador_editar.apellido,
+            'edad': jugador_editar.edad
+            })
+    }
+    return render(request, 'AppGame/jugador_formulario.html' , contexto)
+
+def eliminar_apodo(request,apodo ):
+    apodo_eliminar = Jugador.objects.get(apodo=apodo)
+    apodo_eliminar.delete()
+
+    messages.info(request,f'El apodo {apodo_eliminar} fue eliminado')
+
+    return redirect('AppGameJugador')
+
+
 
 
 def busqueda_categoria_post(request):
@@ -127,6 +176,9 @@ def busqueda_apodo(request):
 
 
 
+    
+
+    
 def jugador_formulario(request):
 
 
@@ -136,44 +188,38 @@ def jugador_formulario(request):
         if mi_formulario.is_valid():
 
             data = mi_formulario.cleaned_data
-
             jugador1 = Jugador(nombre=data.get('nombre'), apellido=data.get('apellido'),
             edad=data.get('edad'),apodo=data.get('apodo'))
             jugador1.save()
 
-            return redirect('AppGameJugadorFormulario') 
-    
-    jugadores = Jugador.objects.all()
-
-    
-    
+            return redirect('AppGameJugadorFormulario')    
     contexto = {
         'form': JugadorFormulario(),
-        'jugadores': jugadores
+        
 
     }
     return render(request, 'AppGame/jugador_formulario.html' , contexto)
 
-
-
-
-def jugador(request):
-    jugador1 = Jugador(nombre='Rodrigo',apellido = 'Rivero',
-                            edad= 31, apodo= 'FenRoh')
+class JugadorList(LoginRequiredMixin,ListView):
+    model = Jugador
+    template_name = 'AppGame/jugador.html'
     
+
+
+
+#def jugador(request):
+ #   jugadores = Jugador.objects.all()
+
+  #  contexto = { 'jugadores':jugadores }
     
-    contexto = {
-        'jugador':jugador1
+  #  return render(request, 'AppGame/jugador.html', contexto)
 
-    }
-    return render(request, 'AppGame/jugador.html', contexto)
-
-
+@login_required
 def consola(request):
-    consola_1 = Consola(marca='playstation',modelo='ps5')
-    consola_1.save()
+    consolas = Consola.objects.all()
+    
     contexto = {
-        'consola':consola_1
+        'consolas': consolas
 
     }
     return render(request, 'AppGame/consola.html', contexto)
