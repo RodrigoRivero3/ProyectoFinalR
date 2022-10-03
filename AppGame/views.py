@@ -219,7 +219,7 @@ def eliminar_apodo(request,apodo ):
 
     messages.info(request,f'El apodo {apodo_eliminar} fue eliminado')
 
-    return render(request,'AppGame/detalle_jugador.html')
+    return redirect('AppGameJugador')
 
 @login_required
 def ver_jugador(request,apodo ):
