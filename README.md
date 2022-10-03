@@ -42,3 +42,5 @@ para hacer cambios en la pagina (como posteos) tendras que estar logeado previam
 
 
 en el admin estara la opcion de editar con ckeditor.
+
+LINK DE DRIVE CON VIDEO: https://drive.google.com/file/d/1Po-0EjUvGSnCXCeFvKjYrCYdX6plmj92/view?usp=sharing
