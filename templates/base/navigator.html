@@ -7,13 +7,17 @@
         
         {% if user.is_authenticated %}
             <img height="40px" src="{{ user.avatar.imagen.url}}" alt="">
-            <h5>User: {{user.get_username}}</h5>
-            <a class="btn btn-primary" href="{% url 'UserLogout' %}">Logout</a>
+            <h5>Usuario: {{user.get_username}}</h5>
+            <a class="btn btn-primary" href="{% url 'UserLogout' %}">Cerrar Sesion</a>
+           
+            <a class="btn btn-primary" href="{% url 'UserAvatar' %}">Avatar</a>
         
+            <a class="btn btn-primary" href="{% url 'UserEditar' %}">Editar Perfil</a>
         {% else %}
-            <a class="btn btn-primary" href="{% url 'UserLogin' %}">Login</a>
-            <a class="btn btn-primary" href="{% url 'UserRegister' %}">Register</a>
-        
+            <a class="btn btn-primary" href="{% url 'UserLogin' %}">Iniciar Sesion</a>
+            <a class="btn btn-primary" href="{% url 'UserRegister' %}">Registrarse</a>
+            
+            
         
         
         

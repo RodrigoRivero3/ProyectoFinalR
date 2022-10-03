@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-=%kfrd-aa&xdks0t!ikqn5z)b&ufxip&1y8x66c3zj+j@!@j_$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['desolate-sea-95244.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -29,6 +29,8 @@ INSTALLED_APPS = [
     'AppGame',
     'UserApp',
     'whitenoise.runserver_nostatic',
+    'ckeditor',
+    'ckeditor_uploader'
     
 ]
 
@@ -119,11 +121,21 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'UserLogin'
 
 # Imagenes :
-MEDIA_URL = '/Media/'
-MADIA_ROOT = os.path.join(BASE_DIR,'Media')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 # Heroku
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
+STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_DIRS = (os.path.join(BASE_DIR,'staticfiles'),)
+
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+CKEDITOR_CONFIG = {
+    'default':{
+        'toolbar':None,
+    },
+}

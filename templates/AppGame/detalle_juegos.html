@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+
+{% block title %}
+Ver detalle Juegos
+{% endblock %}
+
+{% block inicio %}
+
+{% endblock %}
+
+{% block Inicio %}
+
+
+<div class="col-4">
+    <div class="card">
+        <img class="card-img-top" height="300" src="{{ juego_ver.imagen_juego.url }}" alt="{{ juego.titulo}}">
+        <div class="card-body">
+            <h5 class="card-title">{{juego_ver.titulo_posteo}}</h5>
+            <hr />
+            <h6 class="card-subtitle">Autor:{{ juego_ver.autor.username }}</h6>
+            <hr />
+            <h6 class="card-subtitle">{{juego.subtitulo_posteo}}</h6>
+            <hr />
+            <p class="card-subtitle">Categoria:{{juego.categoria}}</p>
+            <br>
+            <a href="{% url 'AppGameVerJuego' juego.categoria  %}">-Ver mas-</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

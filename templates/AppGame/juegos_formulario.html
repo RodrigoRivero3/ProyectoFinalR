@@ -6,7 +6,9 @@
 
 {% block inicio %}
     
-    <form action="" method="POST"> {% csrf_token %}
+    <form action="" method="POST" class="mt-3" autocomplete="on" enctype="multipart/form-data"> 
+    
+    {% csrf_token %}
 
     {{form.as_p}}
 
@@ -15,17 +17,6 @@
 </form>
     
 
-{% for juego in juegos %}
-    El nombre es: {{ juego.nombre }},
-    
-    El modelo es: {{ juego.categoria}},
 
-    El modelo es: {{ juego.fecha_salida}}
-    
-    
-    <br>
-
-
-{% endfor %}
 
 {% endblock %}

@@ -6,17 +6,33 @@
 
 {% block inicio %}
 
+{% endblock %}
+
+{% block Inicio %}
+
 {% for juego in juegos %}
 
+<div class="col-4">
+    <div class="card">
+        <img class="card-img-top" height="300" src="{{ juego.imagen_juego.url }}" alt="{{ juego.titulo}}">
+        <div class="card-body">
+            <h5 class="card-title">{{juego.titulo_posteo}}</h5>
+            <hr />
+            <h6 class="card-subtitle">Autor:{{ juego.autor.username }}</h6>
+            <hr />
+            <h6 class="card-subtitle">{{juego.subtitulo_posteo}}</h6>
+            <hr />
+            <p class="card-subtitle">Categoria:{{juego.categoria}}</p>
+            <hr/>
+            <p class="card-text"> {{juego.contenido_juego}} </p>
+            <br>
+            <h6> {{juego.fecha_juego}} </h6>
+        
 
-    La marca es: {{ juego.nombre }},
-    
-    El modelo es: {{ juego.categoria}},
-    
-    El modelo es: {{ juego.fecha_salida}}
-    
-    
-    <br>
+            <!-- <a href="{% url 'AppGameVerJuego' juego.categoria  %}">-Ver mas-</a> -->
+        </div>
+    </div>
+</div>
 
 
 {% endfor %}

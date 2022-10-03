@@ -6,16 +6,42 @@
 
 {% block inicio %}
 
-{% for jugador in jugadores %}
-    El nombre del jugador es: {{ jugador.nombre }},
-    
-    El apellido es: {{ jugador.apellido}},
-    
-    La edad es: {{ jugador.edad }},
-    
-    El apodo es: {{ jugador.apodo }}
-    <br>
+{% endblock %}
 
+{% block Inicio %}
+
+{% for jugador in jugadores %}
+<div class="col-4">
+    <div class="card">
+        <img class="card-img-top" height="300" src="{{ jugador.imagen_post.url }}" alt="{{ jugador.titulo_post}}">
+        <div class="card-body">
+                <h5 class="card-title">{{jugador.titulo_post}}</h5>
+                    <hr />
+                    <h6 class="card-subtitle">Autor:{{ jugador.autor.username }}</h6>
+                    <hr />
+                    <h6 class="card-subtitle">{{jugador.subtitulo_post}}</h6>
+                    <hr />
+                    <p class="card-subtitle">Apodo:{{jugador.apodo}}</p>
+                    <hr />
+                     <p class="card-subtitle">Nombre: {{jugador.nombre}}</p>
+                    <hr />
+                    <p class="card-subtitle">Nombre: {{jugador.apellido}}</p>
+                    <hr/>
+                    <p class="card-text"> {{jugador.contenido_post}} </p>
+                    <br>
+                    <h6> {{jugador.fecha_jugador}} </h6>
+                <div class="card-footer">
+                {% if user == jugador.autor  %}
+                    <a href="{% url 'AppGameEliminarApodo' jugador.apodo %}" class="btn btn-danger">Eliminar</a>
+                    <a href="{% url 'AppGameEditarJugador' jugador.apodo  %}" class="btn btn-danger" >Editar</a>
+                    
+                    <!-- <a href="{% url 'AppGameVerJugador' jugador.apodo  %}" class="btn btn-danger" >Ver mas</a> -->
+                  
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endfor %}
 

@@ -16,4 +16,4 @@ class UserRegisterForm(UserCreationForm):
 class AvatarForm(forms.ModelForm):
     class Meta:
         model = Avatar
-        fields = ('user', 'imagen')
+        fields = ('imagen',)

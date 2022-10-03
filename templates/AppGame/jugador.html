@@ -5,19 +5,69 @@
 {% endblock %}
 
 {% block inicio %}
-
-{% for jugador in object_list %}
-El nombre del jugador es: {{ jugador.nombre }},
-
-El apellido es: {{ jugador.apellido}},
-
-La edad es: {{ jugador.edad }},
-
-El apodo es: {{ jugador.apodo }}
-<a href="{% url 'AppGameEliminarApodo' jugador.apodo %}">-X-</a>
-<a href="{% url 'AppGameEditarJugador' jugador.apodo  %}">Editar</a>
-<br>
-
-{% endfor %}
-    
+<h1>Jugadores</h1>
 {% endblock %}
+
+{% block Inicio %}
+
+    <div class="mt-3">
+        <div class="row mb-3">
+            <div class="col-3 offset-9">
+                <a href="{% url 'AppGameJugadorFormulario' %}" class="btn btn-primary float-right">
+                    Crear Nuevo Post
+                </a>
+            </div>
+        </div>
+        {% if jugador %}
+            {% for jugador in jugador %}
+                {% if forloop.first %}<div class="row">{% endif %}
+                <div class="col-4">
+                    <div class="card">
+                        <img class="card-img-top" height="300" src="{{ jugador.imagen_post.url }}" alt="{{ jugador.titulo_post}}">
+                        <div class="card-body">
+                                <h5 class="card-title">{{jugador.titulo_post}}</h5>
+                             <hr />
+                                <h6 class="card-subtitle">Autor:{{ jugador.autor.username }}</h6>
+                                <hr />
+                                <h6 class="card-subtitle">{{jugador.subtitulo_post}}</h6>
+                                <hr />
+                                <p class="card-subtitle">Apodo:{{jugador.apodo}}</p>
+                                <hr />
+                                <p class="card-subtitle">Nombre: {{jugador.nombre}}</p>
+                                <hr />
+                                <p class="card-subtitle">Nombre: {{jugador.apellido}}</p>
+                                <hr/>
+                                <p class="card-text"> {{jugador.contenido_post}} </p>
+                                <br>
+                                <h6> {{jugador.fecha_jugador}} </h6>
+                            <div class="card-footer">
+                                {% if user == jugador.autor  %} 
+                                    <a href="{% url 'AppGameEliminarApodo' jugador.apodo %}" class="btn btn-danger">Eliminar</a>
+                                    <a href="{% url 'AppGameEditarJugador' jugador.apodo  %}" class="btn btn-danger" >Editar</a>
+                                    
+                              
+                                    
+                                {% endif%}   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            {% if forloop.counter|divisibleby:4%}</div><div class="row">{% endif %}
+            {% if forloop.last %}</div>{% endif %}
+            {% endfor %}
+
+            {% include 'paginacion.html' %}
+        {% else %}
+            <div class="alert alert-danger">No hay post</div>
+        {% endif %}
+
+
+
+    </div>
+
+{%endblock%}
+
+
+
+                          

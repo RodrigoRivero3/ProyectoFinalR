@@ -6,7 +6,7 @@ from UserApp.forms import *
 from django.contrib.auth.decorators import login_required
 from UserApp.models import Avatar
 
-
+@login_required
 def upload_avatar(request):
     if request.method == 'POST':
 
@@ -22,8 +22,11 @@ def upload_avatar(request):
                 avatar.imagen = formulario.changed_data['imagen']
                 avatar.save()
             else:
-                avatar= Avatar(user=data.get('user'), imagen=data.get('imagen') )
+                avatar= Avatar(user=request.user, imagen=data.get('imagen') )
                 avatar.save()
+            messages.error(request, 'Avatar creado')
+        else:
+            messages.error(request, formulario.errors) 
         return redirect('AppGameInicio')
 
 
