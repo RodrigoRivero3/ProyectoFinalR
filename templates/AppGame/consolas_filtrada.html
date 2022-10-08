@@ -23,14 +23,15 @@
             <br>
             <h6> {{consola.fecha_consola}} </h6>
             <h6 class="card-subtitle">{{consola.subtitulo}}</h6>
-            <div class="card-footer">
-                {% if user == consola.autor  %}
-                    <a href="{% url 'AppGameEliminarModelo' consola.modelo %}" class="btn btn-danger">Eliminar</a>
-                    <a href="{% url 'AppGameEditarConsola' consola.modelo   %}" class="btn btn-danger" >Editar</a>
-                    <!-- <a href="{% url 'AppGameVerConsola' consola.modelo   %}" class="btn btn-danger" >Ver mas</a> -->
+                <div class="card-footer">
+                    {% if user == consola.autor  %}
+                        <a href="{% url 'AppGameEliminarModelo' consola.modelo %}" class="btn btn-danger">Eliminar</a>
+                        <a href="{% url 'AppGameEditarConsola' consola.modelo   %}" class="btn btn-danger" >Editar</a>
+                    
 
-                {% endif %}
-            </div>
+                    {% endif %}
+                        <a href="{% url 'AppGameVerConsola' consola.modelo   %}" class="btn btn-danger" >Ver mas</a>
+                </div>
             </div>
         </div>
     </div>

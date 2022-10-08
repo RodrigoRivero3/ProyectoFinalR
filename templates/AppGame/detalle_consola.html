@@ -10,4 +10,31 @@ Ver detalle Consola
 
 {% block Inicio %}
 
+<div class="col-4">
+    <div class="card">
+        <img class="card-img-top" height="300" src="{{ consola.imagen_consola.url }}" alt="{{ consola.titulo}}">
+        <div class="card-body">
+                <h5 class="card-title">{{consola.titulo}}</h5>
+                <hr />
+                <h6 class="card-subtitle">Autor:{{ consola.autor.username }}</h6>
+                <hr />
+                <h6 class="card-subtitle">{{consola.subtitulo}}</h6>
+                <hr>
+                <h6 class="card-text"> {{consola.contenido}} </h6>
+                <br>
+                <h6> {{consola.fecha_consola}} </h6>
+
+                <div class="card-footer">
+                {% if user == consola.autor  %}
+                    <a href="{% url 'AppGameEliminarModelo' consola.modelo %}" class="btn btn-danger">Eliminar</a>
+                    <a href="{% url 'AppGameEditarConsola' consola.modelo   %}" class="btn btn-danger" >Editar</a>
+                {% endif %}
+                    <a href="{% url 'AppGameConsola'    %}" class="btn btn-danger" >Volver</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
 {% endblock %}

@@ -34,27 +34,25 @@
                             <h6 class="card-subtitle">{{juego.subtitulo_posteo}}</h6>
                             <hr />
                             <p class="card-subtitle">Categoria:{{juego.categoria}}</p>
-                            <hr/>
-                            <p class="card-text"> {{juego.contenido_juego}} </p>
-                            <br>
-                            <h6> {{juego.fecha_juego}} </h6>
+
                             <div class="card-footer">
                                 {% if user == juego.autor  %}
                                     <a href="{% url 'AppGameEliminarCategoria' juego.categoria %}" class="btn btn-danger">Eliminar</a>
                                     <a href="{% url 'AppGameEditarJuegos' juego.categoria  %}" class="btn btn-danger" >Editar</a>
-                                    <!-- <a href="{% url 'AppGameVerJuego' juego.categoria  %}" class="btn btn-danger" >Ver mas</a> -->
+                                    
 
                                 {% endif %}
+                                <a href="{% url 'AppGameVerJuego' juego.categoria  %}" class="btn btn-danger" >Ver mas</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-        {% if forloop.counter|divisibleby:4%}</div><div class="row">{% endif %}
+            {% if forloop.counter|divisibleby:4%}</div><div class="row">{% endif %}
             {% if forloop.last %}</div>{% endif %}
-                {% endfor %}
+            {% endfor %}
 
-            {% include 'paginacion.html' %}
+            {% include 'paginacion_juegos.html' %}
         {% else %}
             <div class="alert alert-danger">No hay post</div>
         {% endif %}
@@ -65,6 +63,3 @@
 
 {%endblock%}
 
-<!-- 
-<a href="{% url 'AppGameEliminarCategoria' juego.categoria %}">-Eliminar-</a>
-<a href="{% url 'AppGameEditarJuegos' juego.categoria  %}">Editar</a> -->

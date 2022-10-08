@@ -20,24 +20,24 @@ def acerca_mio(request):
 def ver_consola(request,modelo ):
     consola = Consola.objects.get(modelo=modelo)
     
-    contexto = {'modelo':consola}
+    contexto = {'consola':consola}
    
 
-    messages.info(request,f'Viendo {consola.titulo} ',contexto)
+    messages.info(request,f'Viendo {consola.titulo} ')
 
-    return render(request,'AppGame/detalle_consola.html')
+    return render(request,'AppGame/detalle_consola.html',contexto)
 
 
 @login_required
 def ver_juego(request,categoria ):
     juego_ver = Juegos.objects.get(categoria=categoria)
     
-    contexto = {'categoria':juego_ver}
+    contexto = {'juego':juego_ver}
    
 
-    messages.info(request,f'Viendo {juego_ver.titulo_posteo} ',contexto)
+    messages.info(request,f'Viendo {juego_ver.titulo_posteo} ')
 
-    return render(request,'AppGame/detalle_juegos.html')
+    return render(request,'AppGame/detalle_juegos.html',contexto)
 
 
 @login_required
@@ -225,12 +225,12 @@ def eliminar_apodo(request,apodo ):
 def ver_jugador(request,apodo ):
     jugador_ver= Jugador.objects.get(apodo=apodo)
     
-    contexto = {'jugador_ver':jugador_ver}
+    contexto = {'jugador':jugador_ver}
    
 
-    messages.info(request,f'Viendo {jugador_ver.titulo_post} ',contexto)
+    messages.info(request,f'Viendo {jugador_ver} ')
 
-    return render(request,'AppGame/detalle_jugador.html')
+    return render(request,'AppGame/detalle_jugador.html', contexto)
 
 
 def busqueda_categoria_post(request):

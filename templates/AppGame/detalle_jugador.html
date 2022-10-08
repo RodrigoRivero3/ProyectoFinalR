@@ -9,28 +9,40 @@ Jugadores formulario
 {% block Inicio %}
 
 
+
+
 <div class="col-4">
     <div class="card">
         <img class="card-img-top" height="300" src="{{ jugador.imagen_post.url }}" alt="{{ jugador.titulo_post}}">
         <div class="card-body">
-                <h5 class="card-title">{{ver_jugador.titulo_post}}</h5>
+                <h5 class="card-title">{{jugador.titulo_post}}</h5>
                     <hr />
-                    <h6 class="card-subtitle">Autor:{{ jugador.autor.username }}</h6>
-                    <hr />
-                    <h6 class="card-subtitle">{{jugador.subtitulo_post}}</h6>
-                    <hr />
-                    <p class="card-subtitle">Apodo:{{jugador.apodo}}</p>
-                    <hr />
-                     <p class="card-subtitle">Nombre: {{jugador.nombre}}</p>
-                    <hr />
-                    <p class="card-subtitle">Nombre: {{jugador.apellido}}</p>
-                <div class="card-footer">
+                        <h6 class="card-subtitle">Autor:{{ jugador.autor.username }}</h6>
+                            <hr />
+                                <h6 class="card-subtitle">{{jugador.subtitulo_post}}</h6>
+                                 <hr />
+                                    <p class="card-subtitle">Apodo:{{jugador.apodo}}</p>
+                                        <hr />
+                                    <p class="card-subtitle">Nombre: {{jugador.nombre}}</p>
+                                     <hr />
+                                    <p class="card-subtitle">Nombre: {{jugador.apellido}}</p>
+                                <div class="card-footer">
+                            <p class="card-text"> {{jugador.contenido_post}} </p>
+                        <br>
+                    <h6> {{jugador.fecha_jugador}} </h6>
+                        <div class="card-footer">
+                            {% if user == jugador.autor  %} 
+                                    <a href="{% url 'AppGameEliminarApodo' jugador.apodo %}" class="btn btn-danger">Eliminar</a>
+                                    <a href="{% url 'AppGameEditarJugador' jugador.apodo  %}" class="btn btn-danger" >Editar</a>
+                            
+                            {% endif%}
+                        <a href="{% url 'AppGameJugador'   %}" class="btn btn-danger" >Volver</a>
+                    </div>
            
             </div>
         </div>
     </div>
 </div>
-
 
 
 

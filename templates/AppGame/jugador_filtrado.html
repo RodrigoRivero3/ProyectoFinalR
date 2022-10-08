@@ -34,10 +34,10 @@
                 {% if user == jugador.autor  %}
                     <a href="{% url 'AppGameEliminarApodo' jugador.apodo %}" class="btn btn-danger">Eliminar</a>
                     <a href="{% url 'AppGameEditarJugador' jugador.apodo  %}" class="btn btn-danger" >Editar</a>
-                    
-                    <!-- <a href="{% url 'AppGameVerJugador' jugador.apodo  %}" class="btn btn-danger" >Ver mas</a> -->
                   
                 {% endif %}
+                
+                <a href="{% url 'AppGameVerJugador' jugador.apodo  %}" class="btn btn-danger" >Ver mas</a>
             </div>
         </div>
     </div>

@@ -37,17 +37,14 @@
                                 <hr />
                                 <p class="card-subtitle">Nombre: {{jugador.apellido}}</p>
                                 <hr/>
-                                <p class="card-text"> {{jugador.contenido_post}} </p>
-                                <br>
-                                <h6> {{jugador.fecha_jugador}} </h6>
+
                             <div class="card-footer">
                                 {% if user == jugador.autor  %} 
                                     <a href="{% url 'AppGameEliminarApodo' jugador.apodo %}" class="btn btn-danger">Eliminar</a>
                                     <a href="{% url 'AppGameEditarJugador' jugador.apodo  %}" class="btn btn-danger" >Editar</a>
                                     
-                              
-                                    
-                                {% endif%}   
+                                {% endif%}
+                                <a href="{% url 'AppGameVerJugador' jugador.apodo  %}" class="btn btn-danger" >Ver mas</a>
                             </div>
                         </div>
                     </div>

@@ -13,17 +13,28 @@ Ver detalle Juegos
 
 <div class="col-4">
     <div class="card">
-        <img class="card-img-top" height="300" src="{{ juego_ver.imagen_juego.url }}" alt="{{ juego.titulo}}">
+        <img class="card-img-top" height="300" src="{{ juego.imagen_juego.url }}" alt="{{ juego.titulo}}">
         <div class="card-body">
-            <h5 class="card-title">{{juego_ver.titulo_posteo}}</h5>
+            <h5 class="card-title">{{juego.titulo_posteo}}</h5>
             <hr />
-            <h6 class="card-subtitle">Autor:{{ juego_ver.autor.username }}</h6>
+            <h6 class="card-subtitle">Autor:{{ juego.autor.username }}</h6>
             <hr />
             <h6 class="card-subtitle">{{juego.subtitulo_posteo}}</h6>
             <hr />
             <p class="card-subtitle">Categoria:{{juego.categoria}}</p>
             <br>
-            <a href="{% url 'AppGameVerJuego' juego.categoria  %}">-Ver mas-</a>
+            <hr/>
+            <p class="card-text"> {{juego.contenido_juego}} </p>
+            <br>
+            <h6> {{juego.fecha_juego}} </h6>
+            <div class="card-footer">
+                {% if user == juego.autor  %}
+                    <a href="{% url 'AppGameEliminarCategoria' juego.categoria %}" class="btn btn-danger">Eliminar</a>
+                    <a href="{% url 'AppGameEditarJuegos' juego.categoria  %}" class="btn btn-danger" >Editar</a>                   
+
+                {% endif %}           
+            
+            <a href="{% url 'AppGameJuegos'  %}" class="btn btn-danger" >Volver</a>
         </div>
     </div>
 </div>
